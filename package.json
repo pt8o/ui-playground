@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack -d --watch",
     "build": "webpack -p",
-    "peerui-copy": "cp -TRv ../peerio-desktop/src/ui-library/ ./src/ui-library/"
+    "peerui-copy": "cp -TRv ../peerio-desktop/src/ui-library/ ./src/ui-library/ && cp -TRv ../peerio-desktop/src/peer-ui.js ./src/peer-ui.js"
   },
   "repository": {
     "type": "git",
