@@ -1,0 +1,24 @@
+.material-icons {
+  cursor: default;
+  vertical-align: middle;
+  font-size: 24px;
+  color: $icon-dark-active;
+
+  &.gold {
+    color: gold;
+  }
+
+  &.selected {
+    color: $blue;
+  }
+}
+
+.reverse-icon.material-icons,
+.reverse-icon .material-icons {
+  @extend %reverse-icon;
+}
+
+.clickable .material-icons,
+.p-button .material-icons {
+  cursor: pointer;
+}
