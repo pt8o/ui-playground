@@ -5,9 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack -d --watch",
-    "build": "webpack -p",
-    "peerui-copy": "cp -TRv ../peerio-desktop/src/ui-library/ ./src/ui-library/ && cp -TRv ../peerio-desktop/src/peer-ui.js ./src/peer-ui.js"
+    "peerui-copy": "cp -TRv ../peerio-desktop/src/ui-library/ ./src/ui-library/ && cp -TRv ../peerio-desktop/src/peer-ui.js ./src/peer-ui.js",
+
+    "watch": "run-p watch:*",
+    "watch:webpack": "webpack -d --watch",
+    "watch:style": "npm run compile:style -- -w",
+
+    "compile": "run-p compile:*",
+    "compile:webpack": "webpack -p",
+    "compile:style": "node-sass src/style.scss src/client/public/style.css"
   },
   "repository": {
     "type": "git",
@@ -20,6 +26,8 @@
   },
   "homepage": "https://github.com/suprko/ui-playground#readme",
   "dependencies": {
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack-dev-server": "^2.11.1"
