@@ -2,7 +2,7 @@ const React = require('react');
 const css = require('classnames');
 
 const MaterialIcon = require('./MaterialIcon');
-const { getDataProps } = require('~/helpers/dom');
+// const { getDataProps } = require('~/helpers/dom');
 
 /*
     PROPS       type        description
@@ -33,7 +33,6 @@ class ListItem extends React.Component {
                     { disabled: this.props.disabled }
                 )}
                 onClick={this.props.onClick}
-                {...getDataProps(this.props)}
             >
                 {this.props.leftIcon
                     ? <div className="side-content left icon">

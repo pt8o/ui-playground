@@ -1,0 +1,74 @@
+.display-1 {
+  @extend %display-1;
+}
+
+.display-2 {
+  @extend %display-2;
+  color: $blue;
+}
+
+.display-3 {
+  @extend %display-3;
+}
+
+.headline {
+  @extend %headline;
+}
+
+.title {
+  @extend %title;
+}
+
+.list-title {
+  @extend %list-title;
+}
+
+.dark-label {
+  @extend %hint-error-label;
+  color: $text-dark-hint;
+}
+
+.text-light-helper {
+  @extend %hint-error-label;
+  color: $text-light-secondary;
+}
+
+.text-dark-helper {
+  @extend %hint-error-label;
+  color: $text-dark-secondary;
+}
+
+.text-brand-primary {
+  color: $blue;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.bold {
+  font-weight: $font-weight-bold;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.monospace {
+  font-family: monospace;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.passphrase {
+  user-select: text;
+  line-height: 1;
+  font-size: 24px;
+  font-weight: $font-weight-bold;
+}

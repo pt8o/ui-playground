@@ -1,0 +1,129 @@
+%notify {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  height: 10px;
+  width: 10px;
+  right: 0;
+  background: $red-error;
+  border-radius: 10px;
+}
+
+.logo {
+  width: 300px;
+  margin: 64px 0 48px;
+}
+
+%reverse-icon {
+  text-align: right;
+  transform: rotateY(180deg);
+}
+
+// OVERRIDE USER AGENT STYLESHEET
+ul {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-padding-start: 0;
+  margin: 0;
+}
+
+// HIDE STUFF
+// doesn't affect layout.
+.hide {
+  visibility: hidden;
+}
+
+// affects layout.
+.banish {
+  display: none !important;
+}
+
+.block {
+  display: block;
+}
+
+.blur {
+  filter: blur(5px);
+}
+
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-scale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+// All items are not selectable by default
+// use this class to make items selectable
+.selectable,
+%selectable {
+  -webkit-user-drag: auto;
+  cursor: text;
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+// Make things scrollable
+.scrollable {
+  overflow-y: auto;
+}
+
+// BUTTONS
+.button-gradient {
+  line-height: 34px;
+  background-image: linear-gradient(to right, rgba($blue, .5), rgba($green, .75));
+  border: 2px solid $white-70 !important;
+  border-color: $white-70;
+  border-radius: 4px;
+
+  &:hover {
+    background-image: $gradient-to-right !important;
+    border: 1px solid $white;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+a.clickable {
+  text-decoration: underline;
+}
+
+// INPUTS
+// User search input (search icon, round edges)
+// TODO: use this class in UserPicker
+.user-search {
+  @extend %flex-align-center;
+  display: flex;
+  width: 100%;
+  padding: 0 $padding-small 0 $padding-default;
+  overflow: hidden;
+  border: 1px solid $input-border;
+  border-radius: 24px;
+
+  .chip-wrapper {
+    padding: 0 8px;
+  }
+
+  .p-input input {
+    padding: 0;
+    font-style: italic;
+    border: 0;
+  }
+}

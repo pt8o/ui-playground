@@ -1,8 +1,11 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
-var APP_DIR = path.resolve(__dirname, 'src/client/app');
+var UI_FILE = path.resolve(__dirname, 'src/peer-ui.js');
+var UI_DIR = path.resolve(__dirname, 'src/ui-library');
+
+var BUILD_DIR = path.resolve(__dirname, 'src/client/build');
+var APP_DIR = path.resolve(__dirname, 'src/client/components');
 
 var config = {
     entry: APP_DIR + '/index.jsx',
@@ -11,13 +14,23 @@ var config = {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?/,
-                include: APP_DIR,
-                loader: 'babel-loader'
+                include: [
+                    APP_DIR,
+                    UI_FILE,
+                    UI_DIR
+                ],
+                use: 'babel-loader'
             }
         ]
+    },
+    resolve: {
+        alias: {
+            '~': path.resolve(__dirname, 'src')
+        },
+        extensions: [ '.js', '.jsx' ]
     }
 };
 

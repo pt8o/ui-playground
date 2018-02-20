@@ -1,8 +1,8 @@
 const React = require('react');
 const { action } = require('mobx');
 const { observer } = require('mobx-react');
-const { contactStore } = require('peerio-icebear');
-const uiStore = require('~/stores/ui-store');
+// const { contactStore } = require('peerio-icebear');
+// const uiStore = require('~/stores/ui-store');
 const css = require('classnames');
 
 const MaterialIcon = require('./MaterialIcon');
@@ -24,13 +24,13 @@ const Tooltip = require('./Tooltip');
 @observer
 class Avatar extends React.Component {
     // When avatar is clickable, click opens ContactProfile dialog
-    @action.bound openContactDialog(ev) {
-        ev.stopPropagation();
-        uiStore.contactDialogUsername = this.props.contact ? this.props.contact.username : this.props.username;
-    }
+    // @action.bound openContactDialog(ev) {
+    //     ev.stopPropagation();
+    //     uiStore.contactDialogUsername = this.props.contact ? this.props.contact.username : this.props.username;
+    // }
 
     render() {
-        const c = this.props.contact || contactStore.getContact(this.props.username);
+        const c = this.props.contact;
 
         let style;
         if (!c.hasAvatar) {

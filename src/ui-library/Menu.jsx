@@ -5,7 +5,7 @@ const { action, observable } = require('mobx');
 const { observer } = require('mobx-react');
 
 const css = require('classnames');
-const { getDataProps, getParentWithClass } = require('~/helpers/dom');
+// const { getDataProps, getParentWithClass } = require('~/helpers/dom');
 
 const Button = require('./Button');
 const Tooltip = require('./Tooltip');
@@ -50,7 +50,7 @@ class Menu extends React.Component {
     @action.bound setMenuButtonRef(ref) {
         if (ref) {
             this.menuButtonRef = ref;
-            this.scrollContainer = getParentWithClass(ref, 'scrollable');
+            // this.scrollContainer = getParentWithClass(ref, 'scrollable');
         }
     }
 
@@ -150,7 +150,6 @@ class Menu extends React.Component {
                 )}
                 style={this.style}
                 ref={this.setMenuContentRef}
-                {...getDataProps(this.props)}
             >
                 {this.props.children}
             </div>
