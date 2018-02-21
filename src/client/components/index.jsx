@@ -1,19 +1,43 @@
 const React = require('react');
 const { render } = require('react-dom');
 
-const { action } = require('mobx');
 const { observer } = require('mobx-react');
 
-const Hello = require('~/ui-library/hello')
-const { Button } = require('~/peer-ui.js');
+const ComponentSelector = require('./ComponentSelector.jsx');
+const { Button } = require('~/peer-ui');
+
+const items = [
+    {
+        name: 'Button',
+        item: <Button label='TEST' theme="affirmative" />,
+        props: [
+            'test'
+        ]
+    }
+];
 
 @observer
-class App extends React.Component {
+class Index extends React.Component {
     render() {
         return(
-            <Hello />
+            <div className="pup-container">
+                <div className="sidebar-left">
+                    <div className="pup-logo">
+                        <div className="main-title">
+                            PeerUI
+                        </div>
+                        <div className="sub-title">
+                            Playground
+                        </div>
+                    </div>
+
+                    <ComponentSelector items={items}/>
+                </div>
+
+
+            </div>
         );
     }
 }
 
-render(<App />, document.getElementById('app'));
+render(<Index />, document.getElementById('app'));

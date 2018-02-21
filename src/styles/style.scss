@@ -1,3 +1,4 @@
+// Imports from app
 @import './_/vars/_branding.scss';
 @import './_/vars/_colors.scss';
 @import './_/vars/_grid.scss';
@@ -10,6 +11,10 @@
 @import './_/misc.scss';
 
 @import '../ui-library/_all.scss';
+
+// Own imports
+@import './misc.scss';
+@import '../../src/client/components/_all.scss';
 
 body {
   background-color: white;
