@@ -14,9 +14,18 @@
       width: 100%;
       opacity: 0;
     }
+
+    &:hover .material-icons {
+      color: $color-affirmative;
+    }
   }
 
   .p-checkbox-label {
     margin-left: $margin-small;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: .5;
   }
 }

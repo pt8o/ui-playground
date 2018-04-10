@@ -24,13 +24,13 @@ const Tooltip = require('./Tooltip');
 @observer
 class Avatar extends React.Component {
     // When avatar is clickable, click opens ContactProfile dialog
-    // @action.bound openContactDialog(ev) {
-    //     ev.stopPropagation();
-    //     uiStore.contactDialogUsername = this.props.contact ? this.props.contact.username : this.props.username;
-    // }
+    @action.bound openContactDialog(ev) {
+        // ev.stopPropagation();
+        // uiStore.contactDialogUsername = this.props.contact ? this.props.contact.username : this.props.username;
+    }
 
     render() {
-        const c = this.props.contact;
+        // const c = this.props.contact || contactStore.getContact(this.props.username);
 
         let style;
         if (!c.hasAvatar) {

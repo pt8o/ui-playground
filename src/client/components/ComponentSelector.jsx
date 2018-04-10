@@ -10,8 +10,6 @@ class ComponentSelector extends React.Component {
     items = this.props.items;
     button = this.props.items[0].item;
 
-
-
     render() {
         console.log(this.items);
         return(

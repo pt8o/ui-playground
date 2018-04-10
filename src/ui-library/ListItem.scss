@@ -9,20 +9,20 @@
 
   // Hover effects
   &:hover {
-    background-color: $lightblue-hover;
+    background-color: $background-selected;
+
+    .material-icons:not(.gold) {
+      color: $color-affirmative;
+    }
   }
 
   // Active/selected colouring
   &.active {
     font-weight: $font-weight-semibold;
-    background: $lightblue;
+    background: rgba($peerio-purple, .45);
 
     .content {
-      color: $text-light-primary;
-    }
-
-    &:hover {
-      background: $lightblue;
+      color: $text-light-default;
     }
   }
 
@@ -30,7 +30,6 @@
   .side-content {
     display: flex;
     align-items: center;
-    min-width: 32px;
 
     &.left {
       margin-right: $margin-default;
@@ -50,7 +49,12 @@
     white-space: nowrap;
 
     .legend {
-      color: $text-dark-secondary;
+      color: $text-dark-inactive;
+    }
+
+    .caption {
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
