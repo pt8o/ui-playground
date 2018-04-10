@@ -3,6 +3,8 @@
   justify-content: center;
   background-color: $grey-lt;
   min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 html * {
@@ -13,7 +15,7 @@ html * {
 .pup-container {
   display: flex;
   position: relative;
-
+  overflow: hidden;
 
   width: 100%;
   margin: $space-md;
@@ -21,12 +23,17 @@ html * {
 
   background-color: $white;
   border: 1px solid black;
-}
 
-.sidebar-left {
-  display: flex;
-  flex-direction: column;
-  width: $sidebar-sm;
+  .sidebar-left {
+    display: flex;
+    flex-direction: column;
+    width: $sidebar-md;
+    border-right: 1px solid $black;
+  }
+
+  .main {
+    flex-grow: 1;
+  }
 }
 
 .pup-logo {

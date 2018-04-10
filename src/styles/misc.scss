@@ -1,7 +1,8 @@
 // Variables
-$grey-lt: #eee;
 $white: #fff;
 $black: #000;
+$grey-lt: #eee;
+$grey-dk: #ddd;
 
 $space-sm: 16px;
 $space-md: 40px;
@@ -12,3 +13,9 @@ $sidebar-md: 240px;
 $font-lg: 24px;
 
 // General styles
+.caps-heading {
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: $space-sm;
+}

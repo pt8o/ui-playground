@@ -904,6 +904,12 @@ dialog {
   .p-tooltip.small {
     max-width: 64px; }
 
+.caps-heading {
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 16px; }
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -955,7 +961,9 @@ table {
   display: flex;
   justify-content: center;
   background-color: #eee;
-  min-height: 100vh; }
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden; }
 
 html * {
   box-sizing: border-box;
@@ -964,16 +972,19 @@ html * {
 .pup-container {
   display: flex;
   position: relative;
+  overflow: hidden;
   width: 100%;
   margin: 40px;
   margin-top: 40px;
   background-color: #fff;
   border: 1px solid black; }
-
-.sidebar-left {
-  display: flex;
-  flex-direction: column;
-  width: 160px; }
+  .pup-container .sidebar-left {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    border-right: 1px solid #000; }
+  .pup-container .main {
+    flex-grow: 1; }
 
 .pup-logo {
   display: flex;
@@ -989,7 +1000,25 @@ html * {
     text-transform: uppercase; }
 
 .pup-selector {
-  padding: 16px; }
+  height: 100%;
+  padding: 16px 0;
+  overflow-y: scroll; }
+  .pup-selector .components-header {
+    padding: 16px; }
+  .pup-selector li {
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 16px; }
+    .pup-selector li:hover, .pup-selector li:focus {
+      background-color: #eee; }
+    .pup-selector li.selected {
+      background-color: #ddd; }
+
+.pup-playground {
+  padding: 40px; }
 
 body {
   background-color: white; }

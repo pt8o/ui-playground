@@ -1,23 +1,27 @@
 const React = require('react');
 const { render } = require('react-dom');
 
+const { action, computed, observable } = require('mobx');
 const { observer } = require('mobx-react');
 
-const ComponentSelector = require('./ComponentSelector.jsx');
-const { Button } = require('~/peer-ui');
+const ComponentSelector = require('./ComponentSelector');
+const ComponentPlayground = require('./ComponentPlayground');
+const ButtonView = require('./views/views');
 
-const items = [
-    {
-        name: 'Button',
-        item: <Button label='TEST' theme="affirmative" />,
-        props: [
-            'test'
-        ]
-    }
-];
+const options = {
+    Button: <ButtonView />
+};
 
 @observer
 class Index extends React.Component {
+    @observable selectorRef;
+    @action.bound setSelectorRef(ref) { if (ref) this.selectorRef = ref; }
+    @computed get selected() {
+        if (this.selectorRef) {
+            return this.selectorRef.selected;
+        }
+    }
+
     render() {
         return(
             <div className="pup-container">
@@ -31,10 +35,10 @@ class Index extends React.Component {
                         </div>
                     </div>
 
-                    <ComponentSelector items={items}/>
+                    <ComponentSelector ref={this.setSelectorRef}/>
                 </div>
 
-
+                <ComponentPlayground selected={this.selected} />
             </div>
         );
     }
