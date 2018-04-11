@@ -25,46 +25,38 @@ const instructions = {
 
 @observer
 class ComponentPlayground extends React.Component {
-    @observable href;
-
-    @observable label;
-    @action.bound labelChange(ev) {
-        this.label = ev.target.value;
-    }
-
-    @observable icon;
-    @action.bound iconChange(ev) {
-        this.icon = ev.target.value;
-    }
-
-    @observable theme;
-    @action.bound themeChange(ev) {
-        this.theme = ev.target.value;
-    }
+    // TODO: Is there a way to declare these in constructor()? Couldn't figure out how to do it bc of @observable, @action.bound, and (ev).
+    @observable label; @action.bound labelChange(ev) { this.label = ev.target.value; }
+    @observable icon; @action.bound iconChange(ev) { this.icon = ev.target.value; }
+    @observable customIcon; @action.bound iconChange(ev) { this.customIcon = ev.target.value; }
+    @observable theme; @action.bound themeChange(ev) { this.theme = ev.target.value; }
 
     @computed get properties() {
-        return {
-            label: this.label,
-            icon: this.icon,
-            customIcon: this.customIcon,
-            theme: this.theme
-        }
-    }
+        const obj = {};
+        const selected = this.props.options[this.props.selected];
 
-    // constructor() {
-    //     super();
-    //     ['mail', 'chats', 'files', 'contacts', 'profile', 'security', 'prefs', 'account', 'about', 'help', 'onboarding']
-    //         .forEach(route => {
-    //             this[`to${route[0].toUpperCase()}${route.slice(1)}`] = () => {
-    //                 routerStore.navigateTo(routerStore.ROUTES[route]);
-    //             };
-    //         });
-    // }
+        selected.textProps.forEach(prop => {
+            obj[prop] = this[prop];
+        });
+
+        return obj;
+    }
 
     @computed get codeBlock() {
+        const block = [];
+        const selected = this.props.options[this.props.selected];
 
+        selected.textProps.forEach(prop => {
+            block.push(
+                <div>
+                    <label key={`${this.props.selected}-${prop}-label`}>{`${prop}=`}</label>
+                    <input key={`${this.props.selected}-${prop}-input`} onChange={this[`${prop}Change`]}/>
+                </div>
+            );
+        });
+
+        return block;
     }
-
 
     render() {
         if (!this.props.selected) return null;
@@ -75,11 +67,8 @@ class ComponentPlayground extends React.Component {
                     <a href={`../src/ui-library/${this.props.selected}.jsx`}>view code</a>
                 </div>
                 <div className="playground-code">
-                    &lt;{this.props.selected}<br/>
-                    &nbsp;&nbsp;label="<input onChange={this.labelChange}/>"<br/>
-                    &nbsp;&nbsp;icon="<input onChange={this.iconChange}/>"<br/>
-                    &nbsp;&nbsp;customIcon=""<br/>
-                    &nbsp;&nbsp;theme="<input onChange={this.themeChange}/>"<br/>
+                    &lt;{this.props.selected}
+                        {this.codeBlock}
                     /&gt;
                 </div>
                 <div className="component-preview">
