@@ -59,8 +59,8 @@ class ComponentPlayground extends React.Component {
             selected.textProps.forEach(prop => {
                 block.push(
                     <div className="property" key={`${this.props.selected}-${prop}-input`}>
-                        <label key={`${this.props.selected}-${prop}-label`}>{`${prop}=`}</label>
-                        <input key={`${this.props.selected}-${prop}-input`} onChange={this[`${prop}Change`]}/>
+                        <label key={`${this.props.selected}-${prop}-label`}>{`${prop}="`}</label>
+                        <input key={`${this.props.selected}-${prop}-input`} onChange={this[`${prop}Change`]}/><label>"</label>
                     </div>
                 );
             });
@@ -88,7 +88,7 @@ class ComponentPlayground extends React.Component {
                 <div className="playground-code">
                     <div className="caps-heading">JSX:</div>
                     <div className="code-itself">
-                        &lt;{this.props.selected}
+                        &lt;<span className="component-name">{this.props.selected}</span>
                             {this.codeBlock}
                         /&gt;
                     </div>

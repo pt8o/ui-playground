@@ -1014,7 +1014,7 @@ html {
     .pup-selector li:hover, .pup-selector li:focus {
       background-color: #eee; }
     .pup-selector li.selected {
-      background-color: #ddd; }
+      background-color: #232323; }
 
 .pup-playground {
   display: flex;
@@ -1034,26 +1034,31 @@ html {
     color: #fff;
     padding: 2px 8px; }
   .pup-playground .playground-code {
-    background-color: #eee;
-    display: block; }
+    display: block;
+    background-color: #232323; }
     .pup-playground .playground-code .code-itself {
+      color: #fff;
       line-height: 2em; }
+    .pup-playground .playground-code .component-name {
+      color: #D62F45; }
     .pup-playground .playground-code .property {
       padding-left: 40px; }
+    .pup-playground .playground-code label {
+      color: #DE8933; }
     .pup-playground .playground-code input {
       font-family: 'Fira Mono', monospace;
       border: none;
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid;
       box-shadow: none;
       background: none;
+      color: #fff;
       padding: 0;
       font-size: 16px;
       width: 240px; }
   .pup-playground .component-preview {
     font-family: "Open Sans", sans-serif; }
     .pup-playground .component-preview .component-itself {
-      display: flex;
-      justify-content: center; }
+      display: flex; }
 
 body {
   background-color: white; }

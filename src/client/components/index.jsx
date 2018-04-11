@@ -36,9 +36,10 @@ class Index extends React.Component {
     @observable selectorRef;
     @action.bound setSelectorRef(ref) { if (ref) this.selectorRef = ref; }
     @computed get selected() {
-        if (this.selectorRef) {
-            return this.selectorRef.selected;
-        }
+        // if (this.selectorRef) {
+        //     return this.selectorRef.selected;
+        // }
+        return 'Button'
     }
 
     render() {
