@@ -82,9 +82,6 @@ class ComponentPlayground extends React.Component {
 
         return(
             <div className="pup-playground">
-                <div className="playground-header">
-                    <a href={`../src/ui-library/${this.props.selected}.jsx`}>view code</a>
-                </div>
                 <div className="playground-code">
                     <div className="caps-heading">JSX:</div>
                     <div className="code-itself">
