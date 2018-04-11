@@ -980,7 +980,7 @@ html {
   .pup-container .sidebar-left {
     display: flex;
     flex-direction: column;
-    width: 240px;
+    width: 160px;
     border-right: 1px solid #000; }
   .pup-container .main {
     flex-grow: 1; }
@@ -1001,7 +1001,7 @@ html {
 .pup-selector {
   height: 100%;
   padding: 16px 0;
-  overflow-y: scroll; }
+  overflow-y: auto; }
   .pup-selector .components-header {
     padding: 16px; }
   .pup-selector li {
@@ -1020,14 +1020,26 @@ html {
   display: flex;
   flex-direction: column;
   flex-grow: 1; }
-  .pup-playground .playground-header {
-    padding: 16px; }
-  .pup-playground .playground-code {
+  .pup-playground > div {
+    position: relative;
     padding: 16px;
+    padding-top: 32px; }
+    .pup-playground > div:not(:last-child) {
+      border-bottom: 1px solid #000; }
+  .pup-playground .caps-heading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #000;
+    color: #fff;
+    padding: 2px 8px; }
+  .pup-playground .playground-code {
     background-color: #eee;
-    display: block;
-    max-height: 30%;
-    line-height: 1.5em; }
+    display: block; }
+    .pup-playground .playground-code .code-itself {
+      line-height: 2em; }
+    .pup-playground .playground-code .property {
+      padding-left: 40px; }
     .pup-playground .playground-code input {
       font-family: 'Fira Mono', monospace;
       border: none;
@@ -1038,9 +1050,7 @@ html {
       font-size: 16px;
       width: 240px; }
   .pup-playground .component-preview {
-    padding: 16px; }
-    .pup-playground .component-preview .component-result {
-      margin-bottom: 40px; }
+    font-family: "Open Sans", sans-serif; }
     .pup-playground .component-preview .component-itself {
       display: flex;
       justify-content: center; }

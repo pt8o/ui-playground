@@ -3,16 +3,35 @@
   flex-direction: column;
   flex-grow: 1;
 
-  .playground-header {
+  > div {
+    position: relative;
     padding: $space-sm;
+    padding-top: $space-md;
+    &:not(:last-child) {
+      border-bottom: 1px solid $black;
+    }
+  }
+
+  .caps-heading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $black;
+    color: $white;
+    padding: 2px 8px;
   }
 
   .playground-code {
-    padding: $space-sm;
     background-color: $grey-lt;
     display: block;
-    max-height: 30%;
-    line-height: 1.5em;
+
+    .code-itself {
+      line-height: 2em;
+    }
+
+    .property {
+      padding-left: 40px;
+    }
 
     input {
       font-family: 'Fira Mono', monospace;
@@ -27,11 +46,7 @@
   }
 
   .component-preview {
-    padding: $space-sm;
-
-    .component-result {
-      margin-bottom: $space-md;
-    }
+    font-family: $font-stack;
 
     .component-itself {
       display: flex;

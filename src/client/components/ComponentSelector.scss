@@ -1,7 +1,7 @@
 .pup-selector {
   height: 100%;
   padding: $space-sm 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   .components-header {
     padding: $space-sm;

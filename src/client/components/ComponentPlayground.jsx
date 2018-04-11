@@ -38,6 +38,7 @@ class ComponentPlayground extends React.Component {
     @observable icon; @action.bound iconChange(ev) { this.icon = ev.target.value; }
     @observable customIcon; @action.bound customIconChange(ev) { this.customIcon = ev.target.value; }
     @observable theme; @action.bound themeChange(ev) { this.theme = ev.target.value; }
+    @observable size; @action.bound sizeChange(ev) { this.size = ev.target.value; }
 
     @computed get properties() {
         const obj = {};
@@ -54,14 +55,24 @@ class ComponentPlayground extends React.Component {
         const block = [];
         const selected = this.props.options[this.props.selected];
 
-        selected.textProps.forEach(prop => {
-            block.push(
-                <div key={`${this.props.selected}-${prop}-input`}>
-                    <label key={`${this.props.selected}-${prop}-label`}>{`${prop}=`}</label>
-                    <input key={`${this.props.selected}-${prop}-input`} onChange={this[`${prop}Change`]}/>
-                </div>
-            );
-        });
+        if (!!selected.textProps) {
+            selected.textProps.forEach(prop => {
+                block.push(
+                    <div className="property" key={`${this.props.selected}-${prop}-input`}>
+                        <label key={`${this.props.selected}-${prop}-label`}>{`${prop}=`}</label>
+                        <input key={`${this.props.selected}-${prop}-input`} onChange={this[`${prop}Change`]}/>
+                    </div>
+                );
+            });
+        }
+
+        if (!!selected.mockProps) {
+            selected.mockProps.forEach(prop => {
+                block.push(
+                    <div className="property" key="prop">{prop}</div>
+                );
+            });
+        }
 
         return block;
     }
@@ -76,14 +87,14 @@ class ComponentPlayground extends React.Component {
                 </div>
                 <div className="playground-code">
                     <div className="caps-heading">JSX:</div>
-                    &lt;{this.props.selected}
-                        {this.codeBlock}
-                    /&gt;
+                    <div className="code-itself">
+                        &lt;{this.props.selected}
+                            {this.codeBlock}
+                        /&gt;
+                    </div>
                 </div>
                 <div className="component-preview">
-                    <div className="component-result caps-heading">
-                        Result:
-                    </div>
+                    <div className="caps-heading">Result:</div>
                     <div className="component-itself">
                         {/* TODO: ok there has to be a better way to do this??? */}
                         {this.props.selected === 'Avatar' && <Avatar contact={contact} {...this.properties} /> }

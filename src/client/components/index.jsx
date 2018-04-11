@@ -10,7 +10,8 @@ const ComponentPlayground = require('./ComponentPlayground');
 const options = {
     'Avatar': {
         'textProps': ['size'],
-        'bools': ['tooltip']
+        'mockProps': ['contact={contactObject} OR username="username"'],
+        'bools': ['clickable', 'tooltip']
     },
     'Button': {
         'textProps': ['label', 'icon', 'customIcon', 'theme'],
