@@ -1,3 +1,42 @@
 .pup-playground {
-  padding: $space-md;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .playground-header {
+    padding: $space-sm;
+  }
+
+  .playground-code {
+    padding: $space-sm;
+    background-color: $grey-lt;
+    display: block;
+    max-height: 30%;
+    line-height: 1.5em;
+
+    input {
+      font-family: 'Fira Mono', monospace;
+      border: none;
+      border-bottom: 1px solid $black;
+      box-shadow: none;
+      background: none;
+      padding: 0;
+      font-size: 16px;
+      width: 240px;
+    }
+  }
+
+  .component-preview {
+    padding: $space-sm;
+
+    .component-result {
+      margin-bottom: $space-md;
+    }
+
+    .component-itself {
+      display: flex;
+      justify-content: center;
+      // font-family: 'Open Sans', sans-serif;
+    }
+  }
 }

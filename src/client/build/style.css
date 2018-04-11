@@ -907,8 +907,7 @@ dialog {
 .caps-heading {
   font-style: italic;
   text-transform: uppercase;
-  font-size: 12px;
-  padding: 16px; }
+  font-size: 12px; }
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -965,17 +964,17 @@ table {
   max-height: 100vh;
   overflow: hidden; }
 
-html * {
-  box-sizing: border-box;
+html {
   font-family: 'Fira Mono', monospace; }
+  html * {
+    box-sizing: border-box; }
 
 .pup-container {
   display: flex;
   position: relative;
   overflow: hidden;
   width: 100%;
-  margin: 40px;
-  margin-top: 40px;
+  margin: 16px;
   background-color: #fff;
   border: 1px solid black; }
   .pup-container .sidebar-left {
@@ -1018,7 +1017,33 @@ html * {
       background-color: #ddd; }
 
 .pup-playground {
-  padding: 40px; }
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; }
+  .pup-playground .playground-header {
+    padding: 16px; }
+  .pup-playground .playground-code {
+    padding: 16px;
+    background-color: #eee;
+    display: block;
+    max-height: 30%;
+    line-height: 1.5em; }
+    .pup-playground .playground-code input {
+      font-family: 'Fira Mono', monospace;
+      border: none;
+      border-bottom: 1px solid #000;
+      box-shadow: none;
+      background: none;
+      padding: 0;
+      font-size: 16px;
+      width: 240px; }
+  .pup-playground .component-preview {
+    padding: 16px; }
+    .pup-playground .component-preview .component-result {
+      margin-bottom: 40px; }
+    .pup-playground .component-preview .component-itself {
+      display: flex;
+      justify-content: center; }
 
 body {
   background-color: white; }

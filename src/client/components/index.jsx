@@ -6,10 +6,25 @@ const { observer } = require('mobx-react');
 
 const ComponentSelector = require('./ComponentSelector');
 const ComponentPlayground = require('./ComponentPlayground');
-const ButtonView = require('./views/views');
 
 const options = {
-    Button: <ButtonView />
+    'Avatar': {'textProps': [], 'bools': []},
+    'Button': {
+        'textProps': ['label', 'icon', 'customIcon', 'theme'],
+        'bools': ['disabled', 'selected', 'active']
+    },
+    'Checkbox': {'textProps': [], 'bools': []},
+    'Chip': {'textProps': [], 'bools': []},
+    'CustomIcon': {'textProps': [], 'bools': []},
+    'Dialog': {'textProps': [], 'bools': []},
+    'Dropdown': {'textProps': [], 'bools': []},
+    'Input': {'textProps': [], 'bools': []},
+    'List': {'textProps': [], 'bools': []},
+    'MaterialIcon': {'textProps': [], 'bools': []},
+    'Menu': {'textProps': [], 'bools': []},
+    'ProgressBar': {'textProps': [], 'bools': []},
+    'RadioButtons': {'textProps': [], 'bools': []},
+    'Switch': {'textProps': [], 'bools': []}
 };
 
 @observer
@@ -17,9 +32,10 @@ class Index extends React.Component {
     @observable selectorRef;
     @action.bound setSelectorRef(ref) { if (ref) this.selectorRef = ref; }
     @computed get selected() {
-        if (this.selectorRef) {
-            return this.selectorRef.selected;
-        }
+        // if (this.selectorRef) {
+        //     return this.selectorRef.selected;
+        // }
+        return 'Button';
     }
 
     render() {
@@ -35,10 +51,10 @@ class Index extends React.Component {
                         </div>
                     </div>
 
-                    <ComponentSelector ref={this.setSelectorRef}/>
+                    <ComponentSelector options={options} ref={this.setSelectorRef}/>
                 </div>
 
-                <ComponentPlayground selected={this.selected} />
+                <ComponentPlayground options={options} selected={this.selected} />
             </div>
         );
     }

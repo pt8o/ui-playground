@@ -7,9 +7,12 @@
   overflow: hidden;
 }
 
-html * {
-  box-sizing: border-box;
+html {
   font-family: 'Fira Mono', monospace;
+
+  * {
+    box-sizing: border-box;
+  }
 }
 
 .pup-container {
@@ -18,8 +21,7 @@ html * {
   overflow: hidden;
 
   width: 100%;
-  margin: $space-md;
-  margin-top: $space-md;
+  margin: $space-sm;
 
   background-color: $white;
   border: 1px solid black;
