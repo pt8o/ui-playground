@@ -30,19 +30,19 @@ class Avatar extends React.Component {
     }
 
     render() {
-        // const c = this.props.contact || contactStore.getContact(this.props.username);
+        const c = this.props.contact;
 
         let style;
         if (!c.hasAvatar) {
             style = { backgroundColor: c.color };
         }
 
-        let errorIcon;
-        if (c.isDeleted) {
-            errorIcon = <MaterialIcon icon="remove_circle" />;
-        } else if (c.tofuError) {
-            errorIcon = <MaterialIcon icon="error" />;
-        }
+        // let errorIcon;
+        // if (c.isDeleted) {
+        //     errorIcon = <MaterialIcon icon="remove_circle" />;
+        // } else if (c.tofuError) {
+        //     errorIcon = <MaterialIcon icon="error" />;
+        // }
 
         return (
             <div className="p-avatar">
@@ -63,7 +63,6 @@ class Avatar extends React.Component {
                         }
                     </div>
                 </div>
-                {errorIcon}
                 {this.props.tooltip
                     ? <Tooltip
                         text={c.fullNameAndUsername}

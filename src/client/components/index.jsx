@@ -8,7 +8,10 @@ const ComponentSelector = require('./ComponentSelector');
 const ComponentPlayground = require('./ComponentPlayground');
 
 const options = {
-    'Avatar': {'textProps': [], 'bools': []},
+    'Avatar': {
+        'textProps': ['size'],
+        'bools': ['tooltip']
+    },
     'Button': {
         'textProps': ['label', 'icon', 'customIcon', 'theme'],
         'bools': ['disabled', 'selected', 'active']
@@ -32,10 +35,9 @@ class Index extends React.Component {
     @observable selectorRef;
     @action.bound setSelectorRef(ref) { if (ref) this.selectorRef = ref; }
     @computed get selected() {
-        // if (this.selectorRef) {
-        //     return this.selectorRef.selected;
-        // }
-        return 'Button';
+        if (this.selectorRef) {
+            return this.selectorRef.selected;
+        }
     }
 
     render() {
