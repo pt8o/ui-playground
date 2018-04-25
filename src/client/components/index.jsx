@@ -23,11 +23,16 @@ const options = {
     },
     'Chip': {
         'textProps': [],
-        'bools': [],
+        'bools': ['deletable'],
         'childContent': 'Child content'
     },
     'CustomIcon': {'textProps': [], 'bools': []},
-    'Dialog': {'textProps': [], 'bools': []},
+    'Dialog': {
+        'textProps': ['theme', 'title'],
+        'mockProps': ['active={boolean}', 'onCancel={function}', 'actions={buttonsGoHere}'],
+        'bools': ['active', 'noAnimation'],
+        'childContent': 'Any HTML content can go in here'
+    },
     'Dropdown': {'textProps': [], 'bools': []},
     'Input': {'textProps': [], 'bools': []},
     'List': {'textProps': [], 'bools': []},

@@ -24,11 +24,12 @@ const { Avatar, Button, Checkbox, Chip, CustomIcon, Dialog, Divider, Dropdown, I
 // };
 
 const propertyArray = [
-    'label',
-    'icon',
     'customIcon',
-    'theme',
+    'icon',
+    'label',
     'size',
+    'theme',
+    'title',
     'tooltip',
     'tooltipPosition',
     'tooltipSize'
@@ -55,7 +56,12 @@ class ComponentPlayground extends React.Component {
     @action.bound genericOnChange(val) {this.genericValue = val };
 
     @observable genericBool = false;
-    @action.bound genericToggle(val) { this.genericBool = !this.genericBool };
+    @action.bound genericToggle() { this.genericBool = !this.genericBool };
+
+    genericActions = [
+        { label: 'Example', onClick: null },
+        { label: 'Final button', onClick: this.genericToggle }
+    ]
 
     constructor() {
         super();
@@ -148,7 +154,6 @@ class ComponentPlayground extends React.Component {
                 <div className="component-preview">
                     <div className="caps-heading">Result:</div>
                     <div className="component-itself">
-                        {/* TODO: ok there has to be a better way to do this??? */}
                         {this.props.selected === 'Avatar' && <Avatar contact={genericContact} {...this.properties} /> }
 
                         {this.props.selected === 'Button' && <Button {...this.properties} />}
@@ -163,11 +168,23 @@ class ComponentPlayground extends React.Component {
 
                         {this.props.selected === 'Chip' &&
                             <Chip {...this.properties}>
-                                Child content
+                                {this.props.options[this.props.selected].childContent}
                             </Chip>
                         }
                         {this.props.selected === 'CustomIcon' && <CustomIcon {...this.properties} />}
-                        {this.props.selected === 'Dialog' && <Dialog {...this.properties} />}
+                        {this.props.selected === 'Dialog' &&
+                            <div>
+                            <Dialog
+                                active={this.genericBool}
+                                onCancel={this.genericToggle}
+                                actions={this.genericActions}
+                                {...this.properties}
+                            >
+                                {this.props.options[this.props.selected].childContent}
+                            </Dialog>
+                            <Button onClick={this.genericToggle}>Show</Button>
+                            </div>
+                        }
                         {this.props.selected === 'Dropdown' &&
                             <Dropdown
                                 onChange={this.genericOnChange}
