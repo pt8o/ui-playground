@@ -73,9 +73,13 @@ class ComponentPlayground extends React.Component {
         });
     }
 
-    get properties() {
+    @computed get selected() {
+        return this.props.options[this.props.selected];
+    }
+
+    @computed get properties() {
         const obj = {};
-        const selected = this.props.options[this.props.selected];
+        const selected = this.selected;
 
         selected.textProps.forEach(prop => {
             obj[prop] = this.propertyMap.get(prop);
@@ -84,14 +88,14 @@ class ComponentPlayground extends React.Component {
         return obj;
     }
 
-    get codeBlock() {
+    @computed get codeBlock() {
         const block = [];
-        const selected = this.props.options[this.props.selected];
+        const selected = this.selected;
 
         if (!!selected.textProps) {
             selected.textProps.forEach(prop => {
                 block.push(
-                    <div className="property" key={`${this.props.selected}-${prop}-input`}>
+                    <div className="property" key={`${this.props.selected}-${prop}-div`}>
                         <label key={`${this.props.selected}-${prop}-label`}>{`${prop}="`}</label>
                         <input key={`${this.props.selected}-${prop}-input`} onChange={this[`${prop}Change`]}/><label>"</label>
                     </div>
@@ -102,7 +106,7 @@ class ComponentPlayground extends React.Component {
         if (!!selected.mockProps) {
             selected.mockProps.forEach(prop => {
                 block.push(
-                    <div className="property label" key="prop">{prop}</div>
+                    <div className="property label" key={`${this.props.selected}-${prop}-mockprop`}>{prop}</div>
                 );
             });
         }
