@@ -1043,7 +1043,7 @@ html {
       color: #D62F45; }
     .pup-playground .playground-code .property {
       padding-left: 40px; }
-    .pup-playground .playground-code label {
+    .pup-playground .playground-code label, .pup-playground .playground-code .label {
       color: #DE8933; }
     .pup-playground .playground-code input {
       font-family: 'Fira Mono', monospace;

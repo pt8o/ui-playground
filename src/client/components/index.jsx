@@ -36,10 +36,10 @@ class Index extends React.Component {
     @observable selectorRef;
     @action.bound setSelectorRef(ref) { if (ref) this.selectorRef = ref; }
     @computed get selected() {
-        // if (this.selectorRef) {
-        //     return this.selectorRef.selected;
-        // }
-        return 'Button'
+        if (this.selectorRef) {
+            return this.selectorRef.selected;
+        }
+        // return 'Button'
     }
 
     render() {
@@ -47,12 +47,8 @@ class Index extends React.Component {
             <div className="pup-container">
                 <div className="sidebar-left">
                     <div className="pup-logo">
-                        <div className="main-title">
-                            PeerUI
-                        </div>
-                        <div className="sub-title">
-                            Playground
-                        </div>
+                        <div className="main-title">PeerUI</div>
+                        <div className="sub-title">Playground</div>
                     </div>
 
                     <ComponentSelector options={options} ref={this.setSelectorRef}/>

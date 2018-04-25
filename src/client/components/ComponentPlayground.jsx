@@ -39,10 +39,7 @@ class ComponentPlayground extends React.Component {
 
         ['label', 'icon', 'customIcon', 'theme', 'size'].forEach(prop => {
             this.propertyList.set(prop, '');
-
-            this[`${prop}Change`] = action((ev) => {
-                this.propertyList.set(prop, ev.target.value)
-            });
+            this[`${prop}Change`] = action((ev) => this.propertyList.set(prop, ev.target.value));
         });
     }
 
@@ -75,7 +72,7 @@ class ComponentPlayground extends React.Component {
         if (!!selected.mockProps) {
             selected.mockProps.forEach(prop => {
                 block.push(
-                    <div className="property" key="prop">{prop}</div>
+                    <div className="property label" key="prop">{prop}</div>
                 );
             });
         }
