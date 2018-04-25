@@ -33,19 +33,25 @@ const contact = {
 
 @observer
 class ComponentPlayground extends React.Component {
-    // TODO: Is there a way to declare these in constructor()? Couldn't figure out how to do it bc of @observable, @action.bound, and (ev).
-    @observable label; @action.bound labelChange(ev) { this.label = ev.target.value; }
-    @observable icon; @action.bound iconChange(ev) { this.icon = ev.target.value; }
-    @observable customIcon; @action.bound customIconChange(ev) { this.customIcon = ev.target.value; }
-    @observable theme; @action.bound themeChange(ev) { this.theme = ev.target.value; }
-    @observable size; @action.bound sizeChange(ev) { this.size = ev.target.value; }
+    constructor() {
+        super();
+        this.propertyList = observable.map();
+
+        ['label', 'icon', 'customIcon', 'theme', 'size'].forEach(prop => {
+            this.propertyList.set(prop, '');
+
+            this[`${prop}Change`] = action((ev) => {
+                this.propertyList.set(prop, ev.target.value)
+            });
+        });
+    }
 
     @computed get properties() {
         const obj = {};
         const selected = this.props.options[this.props.selected];
 
         selected.textProps.forEach(prop => {
-            obj[prop] = this[prop];
+            obj[prop] = this.propertyList.get(prop);
         });
 
         return obj;
