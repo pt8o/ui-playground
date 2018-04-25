@@ -6,42 +6,64 @@ const { observer } = require('mobx-react');
 
 const { Avatar, Button, Checkbox, Chip, CustomIcon, Dialog, Divider, Dropdown, Input, List, ListHeading, ListItem, MaterialIcon, Menu, MenuItem, ProgressBar, RadioButtons, Switch, Tooltip } = require('~/peer-ui');
 
-const instructions = {
-    'Avatar': '',
-    'Button': '',
-    'Checkbox': '',
-    'Chip': '',
-    'CustomIcon': '',
-    'Dialog': '',
-    'Dropdown': '',
-    'Input': '',
-    'List': '',
-    'MaterialIcon': '',
-    'Menu': '',
-    'ProgressBar': '',
-    'RadioButtons': '',
-    'Switch': ''
-}
+// const instructions = {
+//     'Avatar': '',
+//     'Button': '',
+//     'Checkbox': '',
+//     'Chip': '',
+//     'CustomIcon': '',
+//     'Dialog': '',
+//     'Dropdown': '',
+//     'Input': '',
+//     'List': '',
+//     'MaterialIcon': '',
+//     'Menu': '',
+//     'ProgressBar': '',
+//     'RadioButtons': '',
+//     'Switch': ''
+// };
 
-const contact = {
+const propertyArray = [
+    'label',
+    'icon',
+    'customIcon',
+    'theme',
+    'size',
+    'tooltip',
+    'tooltipPosition',
+    'tooltipSize'
+];
+
+const genericContact = {
     hasAvatar: false,
     color: 'red',
     username: 'uiplayground',
     letter: 'U',
     fullNameAndUsername: 'UI Playground'
-}
+};
+
+const genericOptions = [
+    { value: 'item1', label: 'First item' },
+    { value: 'item2', label: 'Second item' },
+    { value: 'item3', label: 'Third item' },
+    { value: 'item4', label: 'Fourth item' }
+];
 
 @observer
 class ComponentPlayground extends React.Component {
-    @observable dropdownValue = '';
+    @observable genericValue = '';
+    @action.bound genericOnChange(val) {this.genericValue = val };
+
+    @observable genericBool = false;
+    @action.bound genericToggle(val) { this.genericBool = !this.genericBool };
 
     constructor() {
         super();
-        this.propertyList = observable.map();
+        this.propertyMap = observable.map();
 
-        ['label', 'icon', 'customIcon', 'theme', 'size'].forEach(prop => {
-            this.propertyList.set(prop, '');
-            this[`${prop}Change`] = action((ev) => this.propertyList.set(prop, ev.target.value));
+        propertyArray.forEach(prop => {
+            this.propertyMap.set(prop, '');
+            this[`${prop}Change`] = action((ev) => this.propertyMap.set(prop, ev.target.value));
         });
     }
 
@@ -50,7 +72,7 @@ class ComponentPlayground extends React.Component {
         const selected = this.props.options[this.props.selected];
 
         selected.textProps.forEach(prop => {
-            obj[prop] = this.propertyList.get(prop);
+            obj[prop] = this.propertyMap.get(prop);
         });
 
         return obj;
@@ -79,7 +101,39 @@ class ComponentPlayground extends React.Component {
             });
         }
 
-        return block;
+        // if (!!selected.bools) {
+        //     selected.bools.forEach(prop => {
+        //         block.push(
+        //
+        //         );
+        //     });
+        // }
+
+        if (!!selected.childContent) {
+            return (
+                <div className="code-itself">
+                    &lt;
+                    <span className="component-name">{this.props.selected}</span>
+                    {block}
+                    &gt;
+                    <br/>
+                    <span className="child-content">{selected.childContent}</span>
+                    <br/>
+                    &lt;/
+                    <span className="component-name">{this.props.selected}</span>
+                    &gt;
+                </div>
+            );
+        } else {
+            return (
+                <div className="code-itself">
+                    &lt;
+                    <span className="component-name">{this.props.selected}</span>
+                    {block}
+                    /&gt;
+                </div>
+            );
+        }
     }
 
     render() {
@@ -89,32 +143,36 @@ class ComponentPlayground extends React.Component {
             <div className="pup-playground">
                 <div className="playground-code">
                     <div className="caps-heading">JSX:</div>
-                    <div className="code-itself">
-                        &lt;<span className="component-name">{this.props.selected}</span>
-                            {this.codeBlock}
-                        /&gt;
-                    </div>
+                    {this.codeBlock}
                 </div>
                 <div className="component-preview">
                     <div className="caps-heading">Result:</div>
                     <div className="component-itself">
                         {/* TODO: ok there has to be a better way to do this??? */}
-                        {this.props.selected === 'Avatar' && <Avatar contact={contact} {...this.properties} /> }
+                        {this.props.selected === 'Avatar' && <Avatar contact={genericContact} {...this.properties} /> }
+
                         {this.props.selected === 'Button' && <Button {...this.properties} />}
-                        {this.props.selected === 'Checkbox' && <Checkbox {...this.properties} />}
-                        {this.props.selected === 'Chip' && <Chip {...this.properties} />}
+
+                        {this.props.selected === 'Checkbox' &&
+                            <Checkbox
+                                checked={this.genericBool}
+                                onChange={this.genericToggle}
+                                {...this.properties}
+                            />
+                        }
+
+                        {this.props.selected === 'Chip' &&
+                            <Chip {...this.properties}>
+                                Child content
+                            </Chip>
+                        }
                         {this.props.selected === 'CustomIcon' && <CustomIcon {...this.properties} />}
                         {this.props.selected === 'Dialog' && <Dialog {...this.properties} />}
                         {this.props.selected === 'Dropdown' &&
                             <Dropdown
-                                onChange={(value) => this.dropdownValue = value}
-                                value={this.dropdownValue || 'item1'}
-                                options={[
-                                    { value: 'item1', label: 'First item' },
-                                    { value: 'item2', label: 'Second item' },
-                                    { value: 'item3', label: 'Third item' },
-                                    { value: 'item4', label: 'Fourth item' }
-                                ]}
+                                onChange={this.genericOnChange}
+                                value={this.genericValue || 'item1'}
+                                options={genericOptions}
                                 {...this.properties}
                             />
                         }
@@ -133,7 +191,14 @@ class ComponentPlayground extends React.Component {
                         {this.props.selected === 'MaterialIcon' && <MaterialIcon {...this.properties} />}
                         {this.props.selected === 'Menu' && <Menu {...this.properties} />}
                         {this.props.selected === 'ProgressBar' && <ProgressBar {...this.properties} />}
-                        {this.props.selected === 'RadioButtons' && <RadioButtons {...this.properties} />}
+                        {this.props.selected === 'RadioButtons' &&
+                            <RadioButtons
+                                onChange={this.genericOnChange}
+                                value={this.genericValue}
+                                options={genericOptions}
+                                {...this.properties}
+                            />
+                        }
                         {this.props.selected === 'Switch' && <Switch {...this.properties} />}
                     </div>
                 </div>

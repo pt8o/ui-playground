@@ -1014,7 +1014,8 @@ html {
     .pup-selector li:hover, .pup-selector li:focus {
       background-color: #eee; }
     .pup-selector li.selected {
-      background-color: #232323; }
+      background-color: #232323;
+      color: #fff; }
 
 .pup-playground {
   display: flex;
@@ -1041,7 +1042,7 @@ html {
       line-height: 2em; }
     .pup-playground .playground-code .component-name {
       color: #D62F45; }
-    .pup-playground .playground-code .property {
+    .pup-playground .playground-code .property, .pup-playground .playground-code .child-content {
       padding-left: 40px; }
     .pup-playground .playground-code label, .pup-playground .playground-code .label {
       color: #DE8933; }

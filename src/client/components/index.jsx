@@ -14,11 +14,18 @@ const options = {
         'bools': ['clickable', 'tooltip']
     },
     'Button': {
-        'textProps': ['label', 'icon', 'customIcon', 'theme'],
+        'textProps': ['label', 'icon', 'customIcon', 'theme', 'tooltip', 'tooltipPosition', 'tooltipSize'],
         'bools': ['disabled', 'selected', 'active']
     },
-    'Checkbox': {'textProps': [], 'bools': []},
-    'Chip': {'textProps': [], 'bools': []},
+    'Checkbox': {
+        'textProps': ['label'],
+        'bools': ['disabled']
+    },
+    'Chip': {
+        'textProps': [],
+        'bools': [],
+        'childContent': 'Child content'
+    },
     'CustomIcon': {'textProps': [], 'bools': []},
     'Dialog': {'textProps': [], 'bools': []},
     'Dropdown': {'textProps': [], 'bools': []},
