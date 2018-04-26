@@ -1003,8 +1003,15 @@ html {
 
 .pup-bool-selector {
   color: #DE8933;
-  cursor: default;
-  text-decoration: line-through; }
+  text-decoration: line-through;
+  cursor: default; }
+  .pup-bool-selector:focus {
+    outline: none; }
+  .pup-bool-selector:hover {
+    color: #eee;
+    border-bottom: 1px dotted; }
+  .pup-bool-selector.active {
+    text-decoration: none; }
 
 .pup-selector {
   height: 100%;
@@ -1065,6 +1072,8 @@ html {
       padding: 0;
       font-size: 16px;
       width: 240px; }
+      .pup-playground .playground-code input:hover {
+        border-bottom: 1px dotted; }
   .pup-playground .component-preview {
     font-family: "Open Sans", sans-serif; }
     .pup-playground .component-preview .component-itself {

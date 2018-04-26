@@ -1,5 +1,18 @@
 .pup-bool-selector {
   color: $code-orange;
-  cursor: default;
   text-decoration: line-through;
+  cursor: default;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: $grey-lt;
+    border-bottom: 1px dotted;
+  }
+
+  &.active {
+    text-decoration: none;
+  }
 }

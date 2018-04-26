@@ -1,19 +1,19 @@
 const React = require('react');
+const { observer } = require('mobx-react');
 const css = require('classnames');
 
 class BoolSelector extends React.Component {
     render() {
         return(
-            <div tabIndex={0}
+            <span tabIndex={0}
                 className={css(
-                    'property',
                     'pup-bool-selector',
                     { active: this.props.active }
                 )}
                 onClick={this.props.onToggle}
             >
                 {this.props.name}
-            </div>
+            </span>
         );
     }
 }

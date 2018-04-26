@@ -48,10 +48,19 @@ class ComponentPlayground extends React.Component {
             obj[prop] = this.propertyMap.get(prop);
         });
 
+        selected.bools.forEach(prop => {
+            obj[prop] = this.boolMap.get(prop);
+        });
+
         return obj;
     }
 
     @observable boolMap = new Map();
+    @action.bound toggleBool(prop) {
+        const currentState = this.boolMap.get(prop);
+        this.boolMap.set(prop, !currentState);
+    }
+
     @computed get codeBlock() {
         const block = [];
         const selected = this.selected;
@@ -75,14 +84,17 @@ class ComponentPlayground extends React.Component {
             });
         }
 
-        this.boolMap.clear();
         if (!!selected.bools) {
             selected.bools.forEach(prop => {
                 block.push(
-                    <BoolSelector
-                        key={`${this.props.selected}-${prop}-bool`}
-                        name={prop}
-                    />
+                    <div className="property">
+                        <BoolSelector
+                            key={`${this.props.selected}-${prop}-bool`}
+                            name={prop}
+                            active={this.boolMap.get(prop)}
+                            onToggle={() => this.toggleBool(prop)}
+                        />
+                    </div>
                 );
             });
         }
