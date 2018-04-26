@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cp-styles": "cp -TRv ../peerio-desktop/src/ui-library/ ./src/ui-library/ && cp -TRv ../peerio-desktop/src/peer-ui.js ./src/peer-ui.js && cp -TRv ../peerio-desktop/src/styles/vars/ ./src/styles/_/vars && cp -TRv ../peerio-desktop/src/styles/typography.scss ./src/styles/_/typography.scss && cp -TRv ../peerio-desktop/src/styles/misc.scss ./src/styles/_/misc.scss",
+    "cp-desktop": "cp -TRv ../peerio-desktop/src/ui-library/ ./src/ui-library/ && cp -TRv ../peerio-desktop/src/peer-ui.js ./src/peer-ui.js && cp -TRv ../peerio-desktop/src/styles/vars/ ./src/styles/_/vars && cp -TRv ../peerio-desktop/src/styles/typography.scss ./src/styles/_/typography.scss && cp -TRv ../peerio-desktop/src/styles/misc.scss ./src/styles/_/misc.scss",
     "watch": "run-p watch:*",
     "watch:webpack": "webpack -d --watch",
     "watch:style": "npm run compile:style -- -w",

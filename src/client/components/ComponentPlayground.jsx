@@ -6,22 +6,7 @@ const { observer } = require('mobx-react');
 
 const { Avatar, Button, Checkbox, Chip, CustomIcon, Dialog, Divider, Dropdown, Input, List, ListHeading, ListItem, MaterialIcon, Menu, MenuItem, ProgressBar, RadioButtons, Switch, Tooltip } = require('~/peer-ui');
 
-// const instructions = {
-//     'Avatar': '',
-//     'Button': '',
-//     'Checkbox': '',
-//     'Chip': '',
-//     'CustomIcon': '',
-//     'Dialog': '',
-//     'Dropdown': '',
-//     'Input': '',
-//     'List': '',
-//     'MaterialIcon': '',
-//     'Menu': '',
-//     'ProgressBar': '',
-//     'RadioButtons': '',
-//     'Switch': ''
-// };
+const { genericContact, genericOptions } = require('./data/generic-data');
 
 const propertyArray = [
     'customIcon',
@@ -33,21 +18,6 @@ const propertyArray = [
     'tooltip',
     'tooltipPosition',
     'tooltipSize'
-];
-
-const genericContact = {
-    hasAvatar: false,
-    color: 'red',
-    username: 'uiplayground',
-    letter: 'U',
-    fullNameAndUsername: 'UI Playground'
-};
-
-const genericOptions = [
-    { value: 'item1', label: 'First item' },
-    { value: 'item2', label: 'Second item' },
-    { value: 'item3', label: 'Third item' },
-    { value: 'item4', label: 'Fourth item' }
 ];
 
 @observer
