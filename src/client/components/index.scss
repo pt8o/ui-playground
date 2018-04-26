@@ -36,6 +36,28 @@ html {
   .main {
     flex-grow: 1;
   }
+
+  .source-link {
+    position: absolute;
+    font-size: 12px;
+    right: $space-sm;
+    bottom: $space-sm;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    color: $peerio-blue;
+
+    &:active, &:focus {
+      color: $peerio-blue;
+    }
+
+    &:hover {
+      border-bottom: 1px dotted;
+    }
+
+    .material-icons {
+      color: inherit;
+    }
+  }
 }
 
 .pup-logo {

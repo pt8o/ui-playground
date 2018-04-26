@@ -5,6 +5,7 @@ const { observer } = require('mobx-react');
 
 const ComponentSelector = require('./ComponentSelector');
 const ComponentPlayground = require('./ComponentPlayground');
+const { MaterialIcon } = require('~/peer-ui');
 
 const components = require('./data/components');
 
@@ -31,6 +32,7 @@ class Index extends React.Component {
                 </div>
 
                 <ComponentPlayground options={components} selected={this.selected} />
+                <a href="https://github.com/suprko/ui-playground" className="source-link" target="_blank"><MaterialIcon icon="code"/> view on GitHub</a>
             </div>
         );
     }

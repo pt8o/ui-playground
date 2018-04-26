@@ -28,3 +28,8 @@ $font-lg: 24px;
 .p-dialog .body {
   font-family: $font-stack;
 }
+
+a .material-icons,
+.clickable.material-icons {
+  cursor: pointer;
+}

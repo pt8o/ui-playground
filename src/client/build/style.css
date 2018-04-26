@@ -912,6 +912,10 @@ dialog {
 .p-dialog .body {
   font-family: "Open Sans", sans-serif; }
 
+a .material-icons,
+.clickable.material-icons {
+  cursor: pointer; }
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -987,6 +991,20 @@ html {
     border-right: 1px solid #000; }
   .pup-container .main {
     flex-grow: 1; }
+  .pup-container .source-link {
+    position: absolute;
+    font-size: 12px;
+    right: 16px;
+    bottom: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    color: #408cff; }
+    .pup-container .source-link:active, .pup-container .source-link:focus {
+      color: #408cff; }
+    .pup-container .source-link:hover {
+      border-bottom: 1px dotted; }
+    .pup-container .source-link .material-icons {
+      color: inherit; }
 
 .pup-logo {
   display: flex;
