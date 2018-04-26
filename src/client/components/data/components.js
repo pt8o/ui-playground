@@ -64,10 +64,10 @@ const components = {
         'bools': ['active']
     },
 
-    'Menu': {
-        'textProps': ['position', 'icon', 'customIcon', 'customButton', 'tooltip', 'tooltipPosition'],
-        'bools': ['disabled']
-    },
+    // 'Menu': {
+    //     'textProps': ['position', 'icon', 'customIcon', 'customButton', 'tooltip', 'tooltipPosition'],
+    //     'bools': ['disabled']
+    // },
 
     'MenuItem': {
         'textProps': ['caption', 'icon', 'customIcon'],
