@@ -1007,17 +1007,18 @@ html {
   overflow-y: auto; }
   .pup-selector .components-header {
     padding: 16px; }
-  .pup-selector li {
-    cursor: default;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding: 16px; }
-    .pup-selector li:hover, .pup-selector li:focus {
+  .pup-selector button {
+    display: block;
+    width: 100%;
+    background: none;
+    outline: 0;
+    border: 0;
+    padding: 16px;
+    font-family: 'Fira Mono', monospace; }
+    .pup-selector button:hover, .pup-selector button:focus {
       background-color: #eee; }
-    .pup-selector li.selected {
-      background-color: #232323;
+    .pup-selector button.selected {
+      background-color: #262626;
       color: #fff; }
 
 .pup-playground {
@@ -1039,7 +1040,7 @@ html {
     padding: 2px 8px; }
   .pup-playground .playground-code {
     display: block;
-    background-color: #232323; }
+    background-color: #262626; }
     .pup-playground .playground-code .code-itself {
       color: #fff;
       line-height: 2em; }
@@ -1062,7 +1063,8 @@ html {
   .pup-playground .component-preview {
     font-family: "Open Sans", sans-serif; }
     .pup-playground .component-preview .component-itself {
-      display: flex; }
+      display: flex;
+      font-size: 14px; }
 
 body {
   background-color: white; }

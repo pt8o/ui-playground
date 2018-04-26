@@ -11,7 +11,7 @@ class ComponentSelector extends React.Component {
     render() {
         const options = Object.keys(this.props.options).map(option => {
             return (
-                <li
+                <button
                     key={option}
                     className={ this.selected === option
                         ? "pup-selector-item selected"
@@ -20,16 +20,16 @@ class ComponentSelector extends React.Component {
                     onClick={() => {this.selected = option;}}
                 >
                     {option}
-                </li>
+                </button>
             );
         });
 
         return(
             <div className="pup-selector">
                 {/* <span className="components-header caps-heading">Select a component:</span> */}
-                <ul>
+                <div>
                     {options}
-                </ul>
+                </div>
             </div>
         );
     }

@@ -7,18 +7,8 @@ const { observer } = require('mobx-react');
 const { Avatar, Button, Checkbox, Chip, CustomIcon, Dialog, Divider, Dropdown, Input, List, ListHeading, ListItem, MaterialIcon, Menu, MenuItem, ProgressBar, RadioButtons, Switch, Tooltip } = require('~/peer-ui');
 
 const { genericContact, genericOptions } = require('./data/generic-data');
+const propertyArray = require('./data/property-array');
 
-const propertyArray = [
-    'customIcon',
-    'icon',
-    'label',
-    'size',
-    'theme',
-    'title',
-    'tooltip',
-    'tooltipPosition',
-    'tooltipSize'
-];
 
 @observer
 class ComponentPlayground extends React.Component {
@@ -30,7 +20,7 @@ class ComponentPlayground extends React.Component {
 
     genericActions = [
         { label: 'Example', onClick: null },
-        { label: 'Final button', onClick: this.genericToggle }
+        { label: 'Last button', onClick: this.genericToggle }
     ]
 
     constructor() {
@@ -145,7 +135,9 @@ class ComponentPlayground extends React.Component {
                                 {this.props.options[this.props.selected].childContent}
                             </Chip>
                         }
+
                         {this.props.selected === 'CustomIcon' && <CustomIcon {...this.properties} />}
+
                         {this.props.selected === 'Dialog' &&
                             <div>
                             <Dialog
@@ -159,6 +151,7 @@ class ComponentPlayground extends React.Component {
                             <Button onClick={this.genericToggle}>Show</Button>
                             </div>
                         }
+
                         {this.props.selected === 'Dropdown' &&
                             <Dropdown
                                 onChange={this.genericOnChange}
@@ -167,21 +160,33 @@ class ComponentPlayground extends React.Component {
                                 {...this.properties}
                             />
                         }
-                        {this.props.selected === 'Input' && <Input {...this.properties} />}
-                        {this.props.selected === 'List' &&
-                            <List {...this.properties}>
-                                <ListHeading>List Heading</ListHeading>
-                                <ListItem>Item 1</ListItem>
-                                <ListItem>Item 2</ListItem>
-                                <ListItem>Item 3</ListItem>
-                                <ListHeading>List Heading</ListHeading>
-                                <ListItem>Item 4</ListItem>
-                                <ListItem>Item 5</ListItem>
+
+                        {this.props.selected === 'Input' &&
+                            <Input
+                                value={this.genericValue}
+                                onChange={this.genericOnChange}
+                                {...this.properties}
+                            />
+                        }
+
+                        {this.props.selected === 'ListItem' &&
+                            <List>
+                                <ListItem {...this.properties} />
                             </List>
                         }
+
                         {this.props.selected === 'MaterialIcon' && <MaterialIcon {...this.properties} />}
+
                         {this.props.selected === 'Menu' && <Menu {...this.properties} />}
+
+                        {this.props.selected === 'MenuItem' &&
+                            <Menu icon="menu" position="top-left">
+                                <MenuItem {...this.properties} />
+                            </Menu>
+                        }
+
                         {this.props.selected === 'ProgressBar' && <ProgressBar {...this.properties} />}
+
                         {this.props.selected === 'RadioButtons' &&
                             <RadioButtons
                                 onChange={this.genericOnChange}
@@ -190,7 +195,14 @@ class ComponentPlayground extends React.Component {
                                 {...this.properties}
                             />
                         }
-                        {this.props.selected === 'Switch' && <Switch {...this.properties} />}
+
+                        {this.props.selected === 'Switch' &&
+                            <Switch
+                                checked={this.genericBool}
+                                onChange={this.genericToggle}
+                                {...this.properties}
+                            />
+                        }
                     </div>
                 </div>
             </div>

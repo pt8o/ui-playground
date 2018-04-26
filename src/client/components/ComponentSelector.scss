@@ -7,14 +7,14 @@
     padding: $space-sm;
   }
 
-  li {
-    cursor: default;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
+  button {
+    display: block;
+    width: 100%;
+    background: none;
+    outline: 0;
+    border: 0;
     padding: $space-sm;
+    font-family: 'Fira Mono', monospace;
 
     &:hover,
     &:focus {
