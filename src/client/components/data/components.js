@@ -23,7 +23,8 @@ const components = {
 
     'CustomIcon': {
         'textProps': ['icon', 'size'],
-        'bools': ['hover', 'selected', 'active']
+        'mockProps': ['hover={boolean // see instructions}'],
+        'bools': ['selected', 'active']
     },
 
     'Dialog': {
@@ -64,10 +65,10 @@ const components = {
         'bools': ['active']
     },
 
-    // 'Menu': {
-    //     'textProps': ['position', 'icon', 'customIcon', 'customButton', 'tooltip', 'tooltipPosition'],
-    //     'bools': ['disabled']
-    // },
+    'Menu': {
+        'textProps': ['position', 'icon', 'customIcon', 'customButton', 'tooltip', 'tooltipPosition'],
+        'bools': ['disabled']
+    },
 
     'MenuItem': {
         'textProps': ['caption', 'icon', 'customIcon'],
@@ -82,7 +83,7 @@ const components = {
 
     'RadioButtons': {
         'textProps': [],
-        'mockProps': ['value="string"', 'options=[{ value: string, label: string }]', 'onChange="function"'],
+        'mockProps': ['value="string"', 'options=[{ value: string, label: string } ...]', 'onChange="function"'],
         'bools': []
     },
 

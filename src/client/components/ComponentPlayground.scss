@@ -24,6 +24,8 @@
   .playground-code {
     display: block;
     background-color: $grey-dk;
+    max-height: 66%;
+    overflow-y: auto;
 
     .code-itself {
       color: $white;

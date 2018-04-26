@@ -1052,7 +1052,9 @@ html {
     padding: 2px 8px; }
   .pup-playground .playground-code {
     display: block;
-    background-color: #262626; }
+    background-color: #262626;
+    max-height: 66%;
+    overflow-y: auto; }
     .pup-playground .playground-code .code-itself {
       color: #fff;
       line-height: 2em; }

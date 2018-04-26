@@ -206,7 +206,10 @@ class ComponentPlayground extends React.Component {
 
                         {this.props.selected === 'MaterialIcon' && <MaterialIcon {...this.properties} />}
 
-                        {this.props.selected === 'Menu' && <Menu {...this.properties} />}
+                        {this.props.selected === 'Menu' &&
+                            // <Menu {...this.properties} />
+                            <div>(unavailable; see instructions)</div>
+                        }
 
                         {this.props.selected === 'MenuItem' &&
                             <Menu icon="menu" position="top-left">
