@@ -1001,6 +1001,11 @@ html {
   .pup-logo .sub-title {
     text-transform: uppercase; }
 
+.pup-bool-selector {
+  color: #DE8933;
+  cursor: default;
+  text-decoration: line-through; }
+
 .pup-selector {
   height: 100%;
   padding: 16px 0;

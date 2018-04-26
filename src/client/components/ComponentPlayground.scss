@@ -31,7 +31,7 @@
     }
 
     .component-name {
-      color: #D62F45;
+      color: $code-red;
     }
 
     .property, .child-content {
@@ -39,7 +39,7 @@
     }
 
     label, .label {
-      color: #DE8933;
+      color: $code-orange;
     }
 
     input {

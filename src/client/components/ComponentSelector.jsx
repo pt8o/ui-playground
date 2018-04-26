@@ -1,5 +1,4 @@
 const React = require('react');
-const { render } = require('react-dom');
 
 const { action, observable } = require('mobx');
 const { observer } = require('mobx-react');

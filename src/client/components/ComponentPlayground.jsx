@@ -1,14 +1,13 @@
 const React = require('react');
-const { render } = require('react-dom');
 
 const { action, computed, observable } = require('mobx');
 const { observer } = require('mobx-react');
 
+const BoolSelector = require('./BoolSelector');
 const { Avatar, Button, Checkbox, Chip, CustomIcon, Dialog, Divider, Dropdown, Input, List, ListHeading, ListItem, MaterialIcon, Menu, MenuItem, ProgressBar, RadioButtons, Switch, Tooltip } = require('~/peer-ui');
 
 const { genericContact, genericOptions } = require('./data/generic-data');
 const propertyArray = require('./data/property-array');
-
 
 @observer
 class ComponentPlayground extends React.Component {
@@ -25,12 +24,16 @@ class ComponentPlayground extends React.Component {
 
     constructor() {
         super();
-        this.propertyMap = observable.map();
 
+        this.propertyMap = observable.map();
         propertyArray.forEach(prop => {
             this.propertyMap.set(prop, '');
             this[`${prop}Change`] = action((ev) => this.propertyMap.set(prop, ev.target.value));
         });
+    }
+
+    componentDidMount() {
+        // add listener for ComponentSelector, clear observables & generic
     }
 
     @computed get selected() {
@@ -48,6 +51,7 @@ class ComponentPlayground extends React.Component {
         return obj;
     }
 
+    @observable boolMap = new Map();
     @computed get codeBlock() {
         const block = [];
         const selected = this.selected;
@@ -71,13 +75,17 @@ class ComponentPlayground extends React.Component {
             });
         }
 
-        // if (!!selected.bools) {
-        //     selected.bools.forEach(prop => {
-        //         block.push(
-        //
-        //         );
-        //     });
-        // }
+        this.boolMap.clear();
+        if (!!selected.bools) {
+            selected.bools.forEach(prop => {
+                block.push(
+                    <BoolSelector
+                        key={`${this.props.selected}-${prop}-bool`}
+                        name={prop}
+                    />
+                );
+            });
+        }
 
         if (!!selected.childContent) {
             return (
