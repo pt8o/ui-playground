@@ -33,7 +33,7 @@ const components = {
             'onCancel={function}',
             'actions={[{ label: string, onClick: function }, ...]}'
         ],
-        'bools': ['active', 'noAnimation'],
+        'bools': ['noAnimation'],
         'childContent': 'Any HTML content can go in here'
     },
 

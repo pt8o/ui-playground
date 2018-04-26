@@ -1,6 +1,6 @@
 const React = require('react');
 
-const { action, computed, observable } = require('mobx');
+const { action, computed, observable, reaction } = require('mobx');
 const { observer } = require('mobx-react');
 
 const BoolSelector = require('./BoolSelector');
@@ -16,10 +16,9 @@ class ComponentPlayground extends React.Component {
 
     @observable genericBool = false;
     @action.bound genericToggle() { this.genericBool = !this.genericBool };
-
     genericActions = [
-        { label: 'Example', onClick: null },
-        { label: 'Last button', onClick: this.genericToggle }
+        { label: 'Cancel', onClick: this.genericToggle },
+        { label: 'OK', onClick: this.genericToggle }
     ]
 
     constructor() {
@@ -33,7 +32,18 @@ class ComponentPlayground extends React.Component {
     }
 
     componentDidMount() {
-        // add listener for ComponentSelector, clear observables & generic
+        // clear all observables whenever a new component is selected from the sidebar
+        this.disposer = reaction(() => this.props.selected, () => {
+            this.propertyMap.keys().forEach(key => this.propertyMap.set(key, ''));
+            this.boolMap.clear();
+            this.genericValue = '';
+            this.genericBool = false;
+        });
+    }
+
+    componentWillUnmount() {
+        if (this.disposer) this.disposer();
+        this.disposer = null;
     }
 
     @computed get selected() {
@@ -87,9 +97,8 @@ class ComponentPlayground extends React.Component {
         if (!!selected.bools) {
             selected.bools.forEach(prop => {
                 block.push(
-                    <div className="property">
+                    <div className="property" key={`${this.props.selected}-${prop}-bool`}>
                         <BoolSelector
-                            key={`${this.props.selected}-${prop}-bool`}
                             name={prop}
                             active={this.boolMap.get(prop)}
                             onToggle={() => this.toggleBool(prop)}
