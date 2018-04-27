@@ -23,8 +23,9 @@ $font-lg: 24px;
   // General styles
   button {
     background: none;
-    outline: 0;
-    border: 0;
+    outline: none;
+    border: none;
+    box-shadow: none;
     font-family: 'Fira Mono', monospace;
   }
 

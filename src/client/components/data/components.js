@@ -5,7 +5,12 @@ const components = {
         bools: ['clickable', 'tooltip'],
 
         instructions: [
-            'Test'
+            'STRING PROPS',
+            'size: tiny, small, medium (default), large, full',
+            '----------------------------------------',
+            'BOOL PROPS',
+            'clickable: click to open user profile in Dialog (not working in playground)',
+            'tooltip: will show user fullname in Tooltip'
         ]
     },
 

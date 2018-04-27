@@ -271,7 +271,7 @@ class ComponentPlayground extends React.Component {
                                     <div className={this.instructionsOpenedOnce ? 'caps-heading hide' : 'caps-heading'}>Instructions</div>
                                 </button>
                                 <div className="caps-heading">Instructions:</div>
-                                {this.instructions}
+                                <div className="text-content">{this.instructions}</div>
                             </div>
                         }
                     </div>

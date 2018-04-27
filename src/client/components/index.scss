@@ -21,7 +21,7 @@ html {
   overflow: hidden;
 
   width: 100%;
-  margin: $space-sm;
+  // margin: 8px;
 
   background-color: $white;
   border: 1px solid black;
@@ -61,8 +61,8 @@ html {
   .source-link {
     position: absolute;
     font-size: 12px;
-    right: $space-sm;
-    bottom: $space-sm;
+    right: 12px;
+    bottom: 12px;
     text-decoration: none;
     border-bottom: 1px solid;
     color: $peerio-blue;
