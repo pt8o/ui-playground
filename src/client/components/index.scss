@@ -33,6 +33,27 @@ html {
     border-right: 1px solid $black;
   }
 
+  .pup-logo {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    width: 100%;
+    padding: $space-sm;
+
+    background-color: $black;
+    color: $white;
+
+    .main-title {
+      font-size: $font-lg;
+    }
+
+    .sub-title {
+      text-transform: uppercase;
+    }
+  }
+
   .main {
     flex-grow: 1;
   }
@@ -57,26 +78,5 @@ html {
     .material-icons {
       color: inherit;
     }
-  }
-}
-
-.pup-logo {
-  display: flex;
-  flex-direction: column;
-
-  text-align: center;
-
-  width: 100%;
-  padding: $space-sm;
-
-  background-color: $black;
-  color: $white;
-
-  .main-title {
-    font-size: $font-lg;
-  }
-
-  .sub-title {
-    text-transform: uppercase;
   }
 }

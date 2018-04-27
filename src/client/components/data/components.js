@@ -30,6 +30,7 @@ const components = {
     Chip: {
         textProps: [],
         bools: ['deletable'],
+        mockProps: ['onDeleteClick={function}'],
         'childContent': 'Child content',
 
         instructions: [

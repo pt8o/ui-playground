@@ -6,16 +6,18 @@ const { observer } = require('mobx-react');
 const BoolSelector = require('./BoolSelector');
 const { Avatar, Button, Checkbox, Chip, CustomIcon, Dialog, Divider, Dropdown, Input, List, ListHeading, ListItem, MaterialIcon, Menu, MenuItem, ProgressBar, RadioButtons, Switch, Tooltip } = require('~/peer-ui');
 
-const { genericContact, genericOptions } = require('./data/generic-data');
 const propertyArray = require('./data/property-array');
+const { genericContact, genericOptions } = require('./data/generic-data');
 
 @observer
 class ComponentPlayground extends React.Component {
+    // Generic observables to reuse across multiple components
     @observable genericValue = '';
     @action.bound genericOnChange(val) {this.genericValue = val };
 
     @observable genericBool = false;
     @action.bound genericToggle() { this.genericBool = !this.genericBool };
+
     genericActions = [
         { label: 'Cancel', onClick: this.genericToggle },
         { label: 'OK', onClick: this.genericToggle }
@@ -24,6 +26,7 @@ class ComponentPlayground extends React.Component {
     constructor() {
         super();
 
+        // Based on propertyArray object, create propertyMap observable map and 'onChange' function for each
         this.propertyMap = observable.map();
         propertyArray.forEach(prop => {
             this.propertyMap.set(prop, '');
@@ -32,7 +35,7 @@ class ComponentPlayground extends React.Component {
     }
 
     componentDidMount() {
-        // clear all observables whenever a new component is selected from the sidebar
+        // Clear all observables whenever a new component is selected from the sidebar
         this.disposer = reaction(() => this.props.selected, () => {
             this.propertyMap.keys().forEach(key => this.propertyMap.set(key, ''));
             this.boolMap.clear();
@@ -50,6 +53,7 @@ class ComponentPlayground extends React.Component {
         return this.props.options[this.props.selected];
     }
 
+    // Create a single "properties" object to feed to the currently selected component
     @computed get properties() {
         const obj = {};
         const selected = this.selected;
@@ -65,19 +69,22 @@ class ComponentPlayground extends React.Component {
         return obj;
     }
 
+    // Keep track of the boolean prop states with another observable map
     @observable boolMap = new Map();
     @action.bound toggleBool(prop) {
         const currentState = this.boolMap.get(prop);
         this.boolMap.set(prop, !currentState);
     }
 
+    // `codeBlock` is the part that looks like code, which the user can interact with to change the component
     @computed get codeBlock() {
-        const block = [];
+        const lines = [];
         const selected = this.selected;
 
+        // String props you can change by typing
         if (!!selected.textProps) {
             selected.textProps.forEach(prop => {
-                block.push(
+                lines.push(
                     <div className="property" key={`${this.props.selected}-${prop}-div`}>
                         <label key={`${this.props.selected}-${prop}-label`}>{`${prop}="`}</label>
                         <input key={`${this.props.selected}-${prop}-input`} onChange={this[`${prop}Change`]}/><label>"</label>
@@ -86,17 +93,19 @@ class ComponentPlayground extends React.Component {
             });
         }
 
+        // Placeholders for props that exist in the real app but you can't modify here (e.g. functions)
         if (!!selected.mockProps) {
             selected.mockProps.forEach(prop => {
-                block.push(
+                lines.push(
                     <div className="property label" key={`${this.props.selected}-${prop}-mockprop`}>{prop}</div>
                 );
             });
         }
 
+        // Boolean props that you can toggle by clicking
         if (!!selected.bools) {
             selected.bools.forEach(prop => {
-                block.push(
+                lines.push(
                     <div className="property" key={`${this.props.selected}-${prop}-bool`}>
                         <BoolSelector
                             name={prop}
@@ -108,12 +117,13 @@ class ComponentPlayground extends React.Component {
             });
         }
 
+        // Some components allow the use of child content via {this.props.children}. Here, mocked up with preset text.
         if (!!selected.childContent) {
             return (
                 <div className="code-itself">
                     &lt;
                     <span className="component-name">{this.props.selected}</span>
-                    {block}
+                    {lines}
                     &gt;
                     <br/>
                     <span className="child-content">{selected.childContent}</span>
@@ -128,11 +138,18 @@ class ComponentPlayground extends React.Component {
                 <div className="code-itself">
                     &lt;
                     <span className="component-name">{this.props.selected}</span>
-                    {block}
+                    {lines}
                     /&gt;
                 </div>
             );
         }
+    }
+
+    @computed get instructions() {
+        if (!this.selected) return;
+        return this.selected.instructions.map((p, i) => {
+            return (<div key={`instruction-${i}`}>{p}</div>);
+        });
     }
 
     render() {
@@ -234,6 +251,19 @@ class ComponentPlayground extends React.Component {
                                 onChange={this.genericToggle}
                                 {...this.properties}
                             />
+                        }
+
+                        {this.instructions &&
+                            <div className="instructions">
+                                <button className="instructions-toggle">
+                                    <MaterialIcon icon={ this.instructionsOpen
+                                        ? 'keyboard_arrow_down'
+                                        : 'keyboard_arrow_up'
+                                    }/>
+                                </button>
+                                <div className="caps-heading">Instructions:</div>
+                                {this.instructions}
+                            </div>
                         }
                     </div>
                 </div>

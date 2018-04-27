@@ -16,12 +16,10 @@
     position: absolute;
     left: 0;
     top: 0;
-    background-color: $black;
-    color: $white;
-    padding: 2px 8px;
   }
 
   .playground-code {
+    position: relative;
     display: block;
     background-color: $grey-dk;
     max-height: 66%;
@@ -63,12 +61,25 @@
 
   .component-preview {
     font-family: $font-stack;
+    flex-grow: 1;
 
     .component-itself {
       display: flex;
       font-size: 14px;
       // justify-content: center;
       // font-family: 'Open Sans', sans-serif;
+    }
+
+    .instructions {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: $space-sm;
+      padding-top: $space-md;
+      width: 100%;
+      min-height: 200px;
+      background-color: $white;
+      border-top: 1px solid $black;
     }
   }
 }

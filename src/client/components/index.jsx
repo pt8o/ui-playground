@@ -14,9 +14,10 @@ class Index extends React.Component {
     @observable selectorRef;
     @action.bound setSelectorRef(ref) { if (ref) this.selectorRef = ref; }
     @computed get selected() {
-        if (this.selectorRef) {
-            return this.selectorRef.selected;
-        }
+        return 'Avatar'
+        // if (this.selectorRef) {
+        //     return this.selectorRef.selected;
+        // }
     }
 
     render() {
@@ -27,12 +28,12 @@ class Index extends React.Component {
                         <div className="main-title">PeerUI</div>
                         <div className="sub-title">Playground</div>
                     </div>
-
                     <ComponentSelector options={components} ref={this.setSelectorRef}/>
                 </div>
-
                 <ComponentPlayground options={components} selected={this.selected} />
-                <a href="https://github.com/suprko/ui-playground" className="source-link" target="_blank"><MaterialIcon icon="code"/> view on GitHub</a>
+                <a href="https://github.com/suprko/ui-playground" className="source-link" target="_blank">
+                    view <MaterialIcon icon="code"/> on GitHub
+                </a>
             </div>
         );
     }

@@ -907,7 +907,10 @@ dialog {
 .caps-heading {
   font-style: italic;
   text-transform: uppercase;
-  font-size: 12px; }
+  font-size: 12px;
+  background-color: #000;
+  color: #fff;
+  padding: 2px 8px; }
 
 .p-dialog .body {
   font-family: "Open Sans", sans-serif; }
@@ -989,6 +992,18 @@ html {
     flex-direction: column;
     width: 160px;
     border-right: 1px solid #000; }
+  .pup-container .pup-logo {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding: 16px;
+    background-color: #000;
+    color: #fff; }
+    .pup-container .pup-logo .main-title {
+      font-size: 24px; }
+    .pup-container .pup-logo .sub-title {
+      text-transform: uppercase; }
   .pup-container .main {
     flex-grow: 1; }
   .pup-container .source-link {
@@ -1005,19 +1020,6 @@ html {
       border-bottom: 1px dotted; }
     .pup-container .source-link .material-icons {
       color: inherit; }
-
-.pup-logo {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
-  padding: 16px;
-  background-color: #000;
-  color: #fff; }
-  .pup-logo .main-title {
-    font-size: 24px; }
-  .pup-logo .sub-title {
-    text-transform: uppercase; }
 
 .pup-bool-selector {
   color: #DE8933;
@@ -1064,11 +1066,9 @@ html {
   .pup-playground .caps-heading {
     position: absolute;
     left: 0;
-    top: 0;
-    background-color: #000;
-    color: #fff;
-    padding: 2px 8px; }
+    top: 0; }
   .pup-playground .playground-code {
+    position: relative;
     display: block;
     background-color: #262626;
     max-height: 66%;
@@ -1095,10 +1095,21 @@ html {
       .pup-playground .playground-code input:hover {
         border-bottom: 1px dotted; }
   .pup-playground .component-preview {
-    font-family: "Open Sans", sans-serif; }
+    font-family: "Open Sans", sans-serif;
+    flex-grow: 1; }
     .pup-playground .component-preview .component-itself {
       display: flex;
       font-size: 14px; }
+    .pup-playground .component-preview .instructions {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 16px;
+      padding-top: 32px;
+      width: 100%;
+      min-height: 200px;
+      background-color: #fff;
+      border-top: 1px solid #000; }
 
 body {
   background-color: white; }
