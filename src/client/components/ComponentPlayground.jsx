@@ -24,7 +24,7 @@ class ComponentPlayground extends React.Component {
     ];
 
     // For the 'instructions' section
-    @observable instructionsOpen = false;
+    @observable instructionsOpen = true;
     @observable instructionsOpenedOnce = false;
     @action.bound toggleInstructions() {
         this.instructionsOpen = !this.instructionsOpen;

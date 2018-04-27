@@ -83,7 +83,7 @@
       border-top: 1px solid $black;
 
       font-family: 'Fira Mono', monospace;
-      line-height: 1.4em;
+      line-height: 1.8em;
 
       padding-left: $space-sm;
       padding-right: $space-sm;
@@ -127,6 +127,7 @@
         padding-bottom: $space-sm;
         min-height: 240px;
         max-height: 240px;
+        // bottom: $space-md;
 
         button {
           background-color: $grey-dk;

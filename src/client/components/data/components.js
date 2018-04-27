@@ -5,10 +5,9 @@ const components = {
         bools: ['clickable', 'tooltip'],
 
         instructions: [
-            'STRING PROPS',
+            '____STRING PROPS_______________________________________',
             'size: tiny, small, medium (default), large, full',
-            '----------------------------------------',
-            'BOOL PROPS',
+            '____BOOL PROPS_________________________________________',
             'clickable: click to open user profile in Dialog (not working in playground)',
             'tooltip: will show user fullname in Tooltip'
         ]
@@ -19,16 +18,30 @@ const components = {
         bools: ['disabled', 'selected', 'active'],
 
         instructions: [
-            ''
+            '____STRING PROPS_______________________________________',
+            'label: text content of label',
+            'icon: MaterialIcon name (e.g. person_add)',
+            'customIcon: CustomIcon name (e.g. pin-off-hover)',
+            'theme: styling (primary, secondary, inverted, affirmative, small, link, no-hover)',
+            'tooltip: text content of tooltip',
+            'tooltipPosition: position of tooltip (top (default), right, bottom, left)',
+            'tooltipSize: size of tooltip (small; leave blank for default)',
+
+            '____BOOL PROPS_________________________________________',
+            'disabled: button greyed out and unclickable',
+            'selected: makes button peerio-blue',
+            'active: makes button peerio-teal'
         ]
     },
 
     Checkbox: {
         textProps: ['label'],
+        mockProps: ['onChange={function}', 'checked={boolean}'],
         bools: ['disabled'],
 
         instructions: [
-            ''
+            'The parent component needs to pass the `onChange` function and `checked` bool (observable) to Checkbox in order for it to work.',
+            'Checkbox can also be disabled with `disable` bool.'
         ]
     },
 
@@ -39,6 +52,10 @@ const components = {
         'childContent': 'Child content',
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -49,6 +66,10 @@ const components = {
         bools: ['selected', 'active'],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -64,6 +85,10 @@ const components = {
         'childContent': 'Any HTML content can go in here',
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -78,6 +103,10 @@ const components = {
         bools: [],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -88,6 +117,10 @@ const components = {
         bools: ['autofocus', 'disabled', 'readOnly', 'multiline'],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -98,6 +131,10 @@ const components = {
         bools: ['disabled'],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -107,6 +144,10 @@ const components = {
         bools: ['active'],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -116,6 +157,10 @@ const components = {
         bools: ['disabled'],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -126,6 +171,10 @@ const components = {
         bools: [],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -135,6 +184,10 @@ const components = {
         bools: [],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -145,6 +198,10 @@ const components = {
         bools: [],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     },
@@ -155,6 +212,10 @@ const components = {
         bools: [],
 
         instructions: [
+            '____STRING PROPS_______________________________________',
+            '',
+
+            '____BOOL PROPS_________________________________________',
             ''
         ]
     }
