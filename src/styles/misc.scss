@@ -39,12 +39,15 @@ $font-lg: 24px;
   }
 
   // Overrides
-  .p-dialog .body {
-    font-family: $font-stack;
-  }
-
   a .material-icons,
   .clickable.material-icons {
     cursor: pointer;
   }
+
+  .p-button {
+    font-family: $font-stack;
+  }
+}
+.p-dialog .body {
+  font-family: $font-stack;
 }

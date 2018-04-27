@@ -83,7 +83,7 @@
       border-top: 1px solid $black;
 
       font-family: 'Fira Mono', monospace;
-      line-height: 1.8em;
+      line-height: 1.5em;
 
       padding-left: $space-sm;
       padding-right: $space-sm;
@@ -145,6 +145,10 @@
         width: 100%;
         overflow-y: auto;
         margin-bottom: $space-md;
+
+        > div {
+          margin-bottom: 1em;
+        }
       }
     }
   }

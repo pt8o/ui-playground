@@ -919,12 +919,15 @@ dialog {
   color: #fff;
   padding: 2px 8px; }
 
-.pup-container .p-dialog .body {
-  font-family: "Open Sans", sans-serif; }
-
 .pup-container a .material-icons,
 .pup-container .clickable.material-icons {
   cursor: pointer; }
+
+.pup-container .p-button {
+  font-family: "Open Sans", sans-serif; }
+
+.p-dialog .body {
+  font-family: "Open Sans", sans-serif; }
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -1113,7 +1116,7 @@ html {
       background-color: #262626;
       border-top: 1px solid #000;
       font-family: 'Fira Mono', monospace;
-      line-height: 1.8em;
+      line-height: 1.5em;
       padding-left: 16px;
       padding-right: 16px;
       padding-top: 0;
@@ -1163,6 +1166,8 @@ html {
         width: 100%;
         overflow-y: auto;
         margin-bottom: 32px; }
+        .pup-playground .component-preview .instructions .text-content > div {
+          margin-bottom: 1em; }
 
 body {
   background-color: white; }
