@@ -72,15 +72,59 @@
 
     .instructions {
       position: absolute;
+      margin-bottom: -1px;
       bottom: 0;
       left: 0;
-      padding: $space-sm;
-      padding-top: $space-md;
       width: 100%;
-      min-height: 200px;
-      background-color: $white;
+      color: $white;
+      background-color: $grey-dk;
       border-top: 1px solid $black;
 
+      padding: 0 $space-sm;
+      min-height: 0;
+      max-height: 0;
+      transition: 300ms;
+
+      button {
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+        width: 80px;
+        margin-left: -40px;
+        border: 1px solid $black;
+        background-color: $grey-dk;
+
+        .caps-heading {
+          bottom: 100%;
+          top: auto;
+          width: 120px;
+          left: 50%;
+          margin-left: -60px;
+          text-align: center;
+
+          background-color: transparent;
+          color: $black;
+        }
+
+        .material-icons {
+          color: $white;
+        }
+
+        &:hover {
+          background-color: $grey-lt;
+
+          .material-icons {
+            color: $black;
+          }
+        }
+      }
+
+      &.open {
+        padding: $space-sm;
+        padding-top: $space-md;
+        min-height: 200px;
+        max-height: none;
+      }
     }
   }
 }

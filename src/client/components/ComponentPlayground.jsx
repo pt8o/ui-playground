@@ -25,8 +25,10 @@ class ComponentPlayground extends React.Component {
 
     // For the 'instructions' section
     @observable instructionsOpen = false;
+    @observable instructionsOpenedOnce = false;
     @action.bound toggleInstructions() {
         this.instructionsOpen = !this.instructionsOpen;
+        this.instructionsOpenedOnce = true;
     }
 
     constructor() {
@@ -260,12 +262,13 @@ class ComponentPlayground extends React.Component {
                         }
 
                         {this.instructions &&
-                            <div className="instructions">
+                            <div className={this.instructionsOpen ? 'instructions open' : 'instructions'}>
                                 <button className="instructions-toggle" onClick={this.toggleInstructions}>
                                     <MaterialIcon icon={ this.instructionsOpen
                                         ? 'keyboard_arrow_down'
                                         : 'keyboard_arrow_up'
-                                    }/>
+                                    }/><br/>
+                                    <div className={this.instructionsOpenedOnce ? 'caps-heading hide' : 'caps-heading'}>Instructions</div>
                                 </button>
                                 <div className="caps-heading">Instructions:</div>
                                 {this.instructions}
