@@ -21,7 +21,13 @@ class ComponentPlayground extends React.Component {
     genericActions = [
         { label: 'Cancel', onClick: this.genericToggle },
         { label: 'OK', onClick: this.genericToggle }
-    ]
+    ];
+
+    // For the 'instructions' section
+    @observable instructionsOpen = false;
+    @action.bound toggleInstructions() {
+        this.instructionsOpen = !this.instructionsOpen;
+    }
 
     constructor() {
         super();
@@ -255,7 +261,7 @@ class ComponentPlayground extends React.Component {
 
                         {this.instructions &&
                             <div className="instructions">
-                                <button className="instructions-toggle">
+                                <button className="instructions-toggle" onClick={this.toggleInstructions}>
                                     <MaterialIcon icon={ this.instructionsOpen
                                         ? 'keyboard_arrow_down'
                                         : 'keyboard_arrow_up'

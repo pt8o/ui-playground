@@ -17,22 +17,34 @@ $sidebar-md: 160px;
 
 $font-lg: 24px;
 
-// General styles
-.caps-heading {
-  font-style: italic;
-  text-transform: uppercase;
-  font-size: 12px;
-  background-color: $black;
-  color: $white;
-  padding: 2px 8px;
-}
+// Misc styles
+.pup-container {
 
-// Overrides
-.p-dialog .body {
-  font-family: $font-stack;
-}
+  // General styles
+  button {
+    background: none;
+    outline: 0;
+    border: 0;
+    padding: $space-sm;
+    font-family: 'Fira Mono', monospace;
+  }
 
-a .material-icons,
-.clickable.material-icons {
-  cursor: pointer;
+  .caps-heading {
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 12px;
+    background-color: $black;
+    color: $white;
+    padding: 2px 8px;
+  }
+
+  // Overrides
+  .p-dialog .body {
+    font-family: $font-stack;
+  }
+
+  a .material-icons,
+  .clickable.material-icons {
+    cursor: pointer;
+  }
 }
